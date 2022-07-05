@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Comment, ImgUser, Plants, Post, PostLike, RecordPost, Species, User, UserPlants
+from .models import Commentary, ImgUser, Plants, Post, PostLike, RecordPost, Species, User, UserPlants
 
 
-class CommentAdmin(admin.ModelAdmin):
+class CommentaryAdmin(admin.ModelAdmin):
     list_display = ('content', 'date', 'post', 'user')
 
 
@@ -15,11 +15,11 @@ class PlantsAdmin(admin.ModelAdmin):
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'content', 'created_at', 'user', 'nb_likes', 'img')
+    list_display = ('title', 'content', 'date', 'user', 'nb_likes', 'img')
 
 
 class PostLikeAdmin(admin.ModelAdmin):
-    list_display = ('user', 'post', 'likes')
+    list_display = ('user', 'post', 'like')
 
 
 class RecordPostAdmin(admin.ModelAdmin):
@@ -32,7 +32,7 @@ class SpeciesAdmin(admin.ModelAdmin):
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('lastname', 'firstname', 'email', 'password', 'created_at', 'pseudo')
+    list_display = ('last_name', 'first_name', 'email', 'password', 'created_at', 'pseudo')
 
 
 class UserPlantsAdmin(admin.ModelAdmin):
@@ -41,7 +41,7 @@ class UserPlantsAdmin(admin.ModelAdmin):
 
 # Register your models here.
 
-admin.site.register(Comment, CommentAdmin)
+admin.site.register(Commentary, CommentaryAdmin)
 admin.site.register(ImgUser, ImgUserAdmin)
 admin.site.register(Plants, PlantsAdmin)
 admin.site.register(Post, PostAdmin)

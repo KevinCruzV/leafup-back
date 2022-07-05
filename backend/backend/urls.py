@@ -19,7 +19,7 @@ from rest_framework import routers
 from leafup import views
 
 router = routers.DefaultRouter()
-router.register(r'comments', views.CommentView)
+router.register(r'comments', views.CommentaryView)
 router.register(r'imgusers', views.ImgUserView)
 router.register(r'plants', views.PlantsView)
 router.register(r'posts', views.PostView)
@@ -32,4 +32,5 @@ router.register(r'userplants', views.UserPlantsView)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls'))
 ]

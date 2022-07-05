@@ -5,6 +5,7 @@
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
+from tkinter import CASCADE
 from django.db import models
 
 
@@ -75,18 +76,16 @@ class AuthUserUserPermissions(models.Model):
         managed = False
         db_table = 'auth_user_user_permissions'
         unique_together = (('user', 'permission'),)
-
-
-class Comment(models.Model):
-    content = models.TextField()
-    date = models.DateTimeField()
-    post = models.ForeignKey('Post', models.DO_NOTHING)
-    user = models.ForeignKey('User', models.DO_NOTHING)
+        
+class Commentary(models.Model):
+    content = models.CharField(max_length=255, blank=True, null=True)
+    date = models.DateTimeField(blank=True, null=True)
+    post = models.ForeignKey('Post', models.DO_NOTHING, blank=True, null=True)
+    user = models.ForeignKey('User', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'comment'
-
+        db_table = 'commentary'
 
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
@@ -132,89 +131,82 @@ class DjangoSession(models.Model):
         managed = False
         db_table = 'django_session'
 
-
 class ImgUser(models.Model):
-    img = models.TextField()
+    img = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'img_user'
 
-
 class Plants(models.Model):
-    name = models.CharField(max_length=200)
-    created_at = models.DateTimeField()
-    species = models.ForeignKey('Species', models.DO_NOTHING)
-    last_watering = models.DateTimeField()
+    name = models.CharField(unique=True, max_length=255, blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, null=True)
+    species = models.ForeignKey('Species', models.DO_NOTHING, blank=True, null=True)
+    last_watering = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'plants'
 
-
 class Post(models.Model):
-    title = models.CharField(max_length=1)
-    content = models.TextField()
-    created_at = models.DateTimeField()
-    user = models.ForeignKey('User', models.DO_NOTHING)
-    nb_likes = models.IntegerField()
-    img = models.TextField()
+    title = models.CharField(max_length=255, blank=True, null=True)
+    content = models.TextField(blank=True, null=True)
+    date = models.CharField(max_length=255, blank=True, null=True)
+    user = models.ForeignKey('User', models.DO_NOTHING, blank=True, null=True)
+    nb_likes = models.IntegerField(blank=True, null=True)
+    img = models.ImageField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'post'
 
-
 class PostLike(models.Model):
-    user = models.ForeignKey('User', models.DO_NOTHING)
-    post = models.ForeignKey(Post, models.DO_NOTHING)
-    likes = models.IntegerField()
+    user = models.OneToOneField('User', models.DO_NOTHING, primary_key=True)
+    post = models.ForeignKey(Post, models.DO_NOTHING, blank=True, null=True)
+    like = models.BooleanField(blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'post_like'
 
-
 class RecordPost(models.Model):
-    user = models.ForeignKey('User', models.DO_NOTHING)
-    post = models.ForeignKey(Post, models.DO_NOTHING)
-    record = models.IntegerField()
+    user = models.ForeignKey('User', models.DO_NOTHING, blank=True, null=True)
+    post = models.ForeignKey(Post, models.DO_NOTHING, blank=True, null=True)
+    record = models.BooleanField(blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'record_post'
 
-
 class Species(models.Model):
-    name = models.CharField(max_length=255)
-    req_humidity_air = models.DecimalField(max_digits=10, decimal_places=0)
-    req_light = models.IntegerField()
-    req_dirt_humidity = models.DecimalField(max_digits=10, decimal_places=0)
-    req_amb_temp = models.IntegerField()
-    req_watering_day = models.TextField()
-    img = models.TextField()
+    name = models.CharField(max_length=255, blank=True, null=True)
+    req_humidity_air = models.FloatField(blank=True, null=True)
+    req_light = models.IntegerField(blank=True, null=True)
+    req_dirt_humidity = models.FloatField(blank=True, null=True)
+    req_amb_temp = models.IntegerField(blank=True, null=True)
+    req_watering_day = models.IntegerField(blank=True, null=True)
+    img = models.ImageField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'species'
 
-
 class User(models.Model):
-    lastname = models.CharField(db_column='lastName', max_length=200)  # Field name made lowercase.
-    firstname = models.CharField(db_column='firstName', max_length=200)  # Field name made lowercase.
-    email = models.CharField(max_length=200)
-    password = models.CharField(max_length=200)
-    created_at = models.DateTimeField()
-    pseudo = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=255, blank=True, null=True)
+    first_name = models.CharField(max_length=255, blank=True, null=True)
+    email = models.EmailField(unique=True, max_length=255)
+    password = models.CharField(max_length=255, blank=True, null=True)
+    token = models.CharField(max_length=255, blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, null=True)
+    pseudo = models.CharField(unique=True, max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'user'
 
-
 class UserPlants(models.Model):
-    user = models.ForeignKey(User, models.DO_NOTHING)
-    plant = models.ForeignKey(Plants, models.DO_NOTHING)
+    user = models.ForeignKey(User, models.DO_NOTHING, blank=True, null=True)
+    plant = models.ForeignKey(Plants, models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False

@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import Comment, ImgUser, Plants, Post, PostLike, RecordPost, Species, User, UserPlants
+from .models import Commentary, ImgUser, Plants, Post, PostLike, RecordPost, Species, User, UserPlants
 
 
-class CommentSerializer(serializers.ModelSerializer):
+class CommentarySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Comment
+        model = Commentary
         fields = ('content', 'date', 'post', 'user')
 
 
@@ -23,13 +23,13 @@ class PlantsSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ('title', 'content', 'created_at', 'user', 'nb_likes', 'img')
+        fields = ('title', 'content', 'created_at', 'date', 'nb_likes', 'img')
 
 
 class PostLikeSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostLike
-        fields = ('user', 'post', 'likes')
+        fields = ('user', 'post', 'like')
 
 
 class RecordPostSerializer(serializers.ModelSerializer):

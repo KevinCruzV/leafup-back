@@ -1,15 +1,15 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .serializers import CommentSerializer, ImgUserSerializer, PlantsSerializer, PostSerializer, PostLikeSerializer, \
+from .serializers import CommentarySerializer, ImgUserSerializer, PlantsSerializer, PostSerializer, PostLikeSerializer, \
     RecordPostSerializer, SpeciesSerializer, UserSerializer, UserPlantsSerializer
-from .models import Comment, ImgUser, Plants, Post, PostLike, RecordPost, Species, User, UserPlants
+from .models import Commentary, ImgUser, Plants, Post, PostLike, RecordPost, Species, User, UserPlants
 
 
 # Create your views here.
 
-class CommentView(viewsets.ModelViewSet):
-    serializer_class = CommentSerializer
-    queryset = Comment.objects.all()
+class CommentaryView(viewsets.ModelViewSet):
+    serializer_class = CommentarySerializer
+    queryset = Commentary.objects.all()
 
 
 class ImgUserView(viewsets.ModelViewSet):
