@@ -9,7 +9,7 @@ iterator = pyfirmata2.util.Iterator(board)  # Permet d’initialiser la liaison 
 iterator.start()  # Démarrage de la connexion
 temperature_pin.enable_reporting()  # Lecture des valeurs de la broche choisie
 
-while temperature_pin.read() is None: var = None  # Tant qu’il n’y a pas de valeurs
+while temperature_pin.read() is None: var = None # Tant qu’il n’y a pas de valeurs
 
 try:
     while True:  # Boucle infinie
