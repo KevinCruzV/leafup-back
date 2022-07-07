@@ -164,6 +164,10 @@ class Post(models.Model):
         managed = False
         db_table = 'post'
 
+    def __str__(self):
+        return '%s : %s' % (self.title, self.content)
+
+
 
 class PostLike(models.Model):
     user = models.ForeignKey('User', models.DO_NOTHING)

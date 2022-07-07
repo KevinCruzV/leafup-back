@@ -59,7 +59,7 @@ class UserPlantsSerializer(serializers.ModelSerializer):
 
 
 class PostByUserSerializer(serializers.ModelSerializer):
-    posts = serializers.StringRelatedField(many=True)
+    posts = PostSerializer(many=True, read_only=True)
 
     class Meta:
         model = User
