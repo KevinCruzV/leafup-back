@@ -22,21 +22,21 @@ try:
 
         if temperature_pin.read() > 0 :
 
-            url = "http://localhost:8000/api/plants/"
+            url = "http://localhost:8000/api/plants/1/"
             headers = {"Content-Type": "application/json;"}
 
             # A remplacer par la valeur du capteur
             temp = temperature_pin.read()
 
             data = {
-                "name": "test plante",
+                "name": "test put",
                 "created_at": "2022-07-7T01:51:42.000Z",
                 "species": "1",
                 "last_watering": "2022-07-7T01:51:42.000Z",
                 "temp": temp
             }
 
-            response = requests.post(url, headers=headers, json=data)
+            response = requests.put(url, headers=headers, json=data)
 
             while True:
                 print("Status Code: ", response.status_code)
