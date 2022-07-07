@@ -28,6 +28,7 @@ router.register(r'recordposts', views.RecordPostView)
 router.register(r'species', views.SpeciesView)
 router.register(r'users', views.UserView)
 router.register(r'userplants', views.UserPlantsView)
+router.register(r'postbyusers', views.PostByUserView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

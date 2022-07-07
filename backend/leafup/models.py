@@ -156,7 +156,7 @@ class Post(models.Model):
     title = models.CharField(max_length=1)
     content = models.TextField()
     created_at = models.DateTimeField()
-    user = models.ForeignKey('User', models.DO_NOTHING)
+    user = models.ForeignKey('User', models.DO_NOTHING, related_name='posts')
     nb_likes = models.IntegerField()
     img = models.TextField()
 

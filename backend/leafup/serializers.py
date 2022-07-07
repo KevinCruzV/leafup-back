@@ -42,7 +42,8 @@ class SpeciesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Species
         fields = (
-            'id', 'name', 'req_humidity_air', 'req_light', 'req_dirt_humidity', 'req_amb_temp', 'req_watering_day', 'img')
+            'id', 'name', 'req_humidity_air', 'req_light', 'req_dirt_humidity', 'req_amb_temp', 'req_watering_day',
+            'img')
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -55,3 +56,11 @@ class UserPlantsSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserPlants
         fields = ('user', 'plant')
+
+
+class PostByUserSerializer(serializers.ModelSerializer):
+    posts = serializers.StringRelatedField(many=True)
+
+    class Meta:
+        model = User
+        fields = ['lastname', 'firstname', 'posts']
