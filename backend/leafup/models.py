@@ -146,7 +146,6 @@ class Plants(models.Model):
     created_at = models.DateTimeField()
     species = models.ForeignKey('Species', models.DO_NOTHING)
     last_watering = models.DateTimeField()
-    temp = models.FloatField()
 
     class Meta:
         managed = False
@@ -164,10 +163,6 @@ class Post(models.Model):
     class Meta:
         managed = False
         db_table = 'post'
-
-    def __str__(self):
-        return '%s : %s' % (self.title, self.content)
-
 
 
 class PostLike(models.Model):

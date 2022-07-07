@@ -63,7 +63,7 @@ class PostByUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['lastname', 'firstname', 'posts']
+        fields = ['id', 'lastname', 'firstname', 'posts']
 
 
 class CommentByPostSerializer(serializers.ModelSerializer):
@@ -71,4 +71,4 @@ class CommentByPostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ['title', 'content', 'comments']
+        fields = ['id', 'title', 'content', 'comments']
