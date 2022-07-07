@@ -1,11 +1,11 @@
-import pyfirmata2
+import pyfirmata
 import time
 
-port = '/dev/cu.usbserial-1430'  # Windows (à adapter par rapport à votre ordinateur)
-board = pyfirmata2.Arduino(port)  # Permet d’ouvrir le port associer
+port = '/dev/cu.usbserial-10'  # Windows (à adapter par rapport à votre ordinateur)
+board = pyfirmata.Arduino(port)  # Permet d’ouvrir le port associer
 
-temperature_pin = board.get_pin('a:0:i')  # Permet d’initialiser la broche utilisée
-iterator = pyfirmata2.util.Iterator(board)  # Permet d’initialiser la liaison entre Python et Arduino
+temperature_pin = board.get_pin('a:0:A1')  # Permet d’initialiser la broche utilisée
+iterator = pyfirmata.util.Iterator(board)  # Permet d’initialiser la liaison entre Python et Arduino
 iterator.start()  # Démarrage de la connexion
 temperature_pin.enable_reporting()  # Lecture des valeurs de la broche choisie
 
