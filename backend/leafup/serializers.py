@@ -23,7 +23,7 @@ class PlantsSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ('title', 'content', 'created_at', 'date', 'nb_likes', 'img')
+        fields = ('title', 'content', 'date', 'nb_likes', 'img')
 
 
 class PostLikeSerializer(serializers.ModelSerializer):
