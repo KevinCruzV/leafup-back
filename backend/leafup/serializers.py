@@ -17,7 +17,7 @@ class ImgUserSerializer(serializers.ModelSerializer):
 class PlantsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Plants
-        fields = ('id', 'name', 'created_at', 'species', 'last_watering')
+        fields = ('id', 'name', 'created_at', 'species', 'last_watering', 'temp')
 
 
 class PostSerializer(serializers.ModelSerializer):

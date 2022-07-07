@@ -146,6 +146,7 @@ class Plants(models.Model):
     created_at = models.DateTimeField()
     species = models.ForeignKey('Species', models.DO_NOTHING)
     last_watering = models.DateTimeField()
+    temp = models.FloatField()
 
     class Meta:
         managed = False
