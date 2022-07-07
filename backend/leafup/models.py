@@ -80,8 +80,8 @@ class AuthUserUserPermissions(models.Model):
 class Comment(models.Model):
     content = models.TextField()
     date = models.DateTimeField()
-    post = models.ForeignKey('Post', models.DO_NOTHING)
-    user = models.ForeignKey('User', models.DO_NOTHING)
+    post = models.ForeignKey('Post', models.DO_NOTHING, related_name='comments')
+    user = models.ForeignKey('User', models.DO_NOTHING, related_name='comments')
 
     class Meta:
         managed = False
