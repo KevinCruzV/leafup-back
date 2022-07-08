@@ -86,7 +86,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "leafup",
         'USER': 'root',
-        'PASSWORD': 'kevin',
+        'PASSWORD': 'FairyTail31!',
         'HOST': 'localhost',
         'PORT': '3306',
     }
