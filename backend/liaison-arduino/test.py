@@ -4,7 +4,7 @@ import requests
 import time
 
 
-port = '/dev/cu.usbserial-10'  # Windows (à adapter par rapport à votre ordinateur)
+port = '/dev/cu.usbserial-110'  # Windows (à adapter par rapport à votre ordinateur)
 board = pyfirmata.Arduino(port)  # Permet d’ouvrir le port associer
 
 temperature_pin = board.get_pin('a:0:A1')  # Permet d’initialiser la broche utilisée
