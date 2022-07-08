@@ -29,7 +29,7 @@ try:
             temp = temperature_pin.read()
 
             data = {
-                "name": "test put",
+                "name": "test shell",
                 "created_at": "2022-07-7T01:51:42.000Z",
                 "species": "1",
                 "last_watering": "2022-07-7T01:51:42.000Z",
