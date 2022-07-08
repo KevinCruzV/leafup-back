@@ -26,10 +26,10 @@ router.register(r'posts', views.PostView)
 router.register(r'postlikes', views.PostLikeView)
 router.register(r'recordposts', views.RecordPostView)
 router.register(r'species', views.SpeciesView)
-router.register(r'user', views.UserView)
+router.register(r'users', views.UserView)
 router.register(r'userplants', views.UserPlantsView)
 router.register(r'commentbypost', views.CommentByPostView)
-#router.register(r'postbyusers', views.PostByUserView)
+router.register(r'postbyusers', views.PostByUserView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
