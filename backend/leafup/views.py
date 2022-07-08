@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from requests import Response
 from rest_framework import viewsets
 from .serializers import CommentSerializer, ImgUserSerializer, PlantsSerializer, PostSerializer, PostLikeSerializer, \
     RecordPostSerializer, SpeciesSerializer, UserSerializer, UserPlantsSerializer, PostByUserSerializer, \
@@ -61,4 +62,3 @@ class PostByUserView(viewsets.ModelViewSet):
 class CommentByPostView(viewsets.ModelViewSet):
     serializer_class = CommentByPostSerializer
     queryset = Post.objects.all()
-

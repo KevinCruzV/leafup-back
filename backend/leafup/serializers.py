@@ -52,6 +52,12 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'lastname', 'firstname', 'email', 'password', 'created_at', 'pseudo')
 
 
+class User2Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'lastname', 'firstname')
+
+
 class UserPlantsSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserPlants
