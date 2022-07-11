@@ -14,12 +14,6 @@ class ImgUserSerializer(serializers.ModelSerializer):
         fields = ('id', 'img')
 
 
-class PlantsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Plants
-        fields = ('id', 'name', 'created_at', 'species', 'last_watering', 'temp')
-
-
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
@@ -46,22 +40,25 @@ class SpeciesSerializer(serializers.ModelSerializer):
             'img')
 
 
+class PlantsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Plants
+        fields = ('id', 'name', 'created_at', 'species', 'last_watering', 'temp', 'user')
+
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'lastname', 'firstname', 'email', 'password', 'created_at', 'pseudo')
 
 
-class User2Serializer(serializers.ModelSerializer):
+class UserPlantsSerializer(serializers.ModelSerializer):
+    plants = PlantsSerializer(many=True, read_only=True)
+
+
     class Meta:
         model = User
-        fields = ('id', 'lastname', 'firstname')
-
-
-class UserPlantsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserPlants
-        fields = ('user', 'plant')
+        fields = ['plants']
 
 
 class PostByUserSerializer(serializers.ModelSerializer):
@@ -77,6 +74,12 @@ class CommentByPostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ['id', 'title', 'content', 'comments']
+        fields = ['comments']
 
 
+class SpeciesForPlantsSerializer(serializers.ModelSerializer):
+    species = SpeciesSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Plants
+        fields = ['species']

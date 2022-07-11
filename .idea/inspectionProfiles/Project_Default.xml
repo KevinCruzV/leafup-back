@@ -11,6 +11,8 @@
         <list>
           <option value="backend.leafup.models.PostLike.objects" />
           <option value="backend.backend.urls.*" />
+          <option value="django.db.models.fields.CharField.__add__" />
+          <option value="pyfirmata.util.Iterator" />
         </list>
       </option>
     </inspection_tool>

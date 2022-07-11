@@ -3,7 +3,7 @@ from requests import Response
 from rest_framework import viewsets
 from .serializers import CommentSerializer, ImgUserSerializer, PlantsSerializer, PostSerializer, PostLikeSerializer, \
     RecordPostSerializer, SpeciesSerializer, UserSerializer, UserPlantsSerializer, PostByUserSerializer, \
-    CommentByPostSerializer
+    CommentByPostSerializer, SpeciesForPlantsSerializer
 from .models import Comment, ImgUser, Plants, Post, PostLike, RecordPost, Species, User, UserPlants
 
 
@@ -51,7 +51,7 @@ class UserView(viewsets.ModelViewSet):
 
 class UserPlantsView(viewsets.ModelViewSet):
     serializer_class = UserPlantsSerializer
-    queryset = UserPlants.objects.all()
+    queryset = User.objects.all()
 
 
 class PostByUserView(viewsets.ModelViewSet):
@@ -62,3 +62,8 @@ class PostByUserView(viewsets.ModelViewSet):
 class CommentByPostView(viewsets.ModelViewSet):
     serializer_class = CommentByPostSerializer
     queryset = Post.objects.all()
+
+
+class SpeciesForPlantsView(viewsets.ModelViewSet):
+    serializer_class = SpeciesForPlantsSerializer
+    queryset = Plants.objects.all()

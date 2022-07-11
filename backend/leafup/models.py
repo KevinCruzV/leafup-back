@@ -79,7 +79,7 @@ class AuthUserUserPermissions(models.Model):
 
 class Comment(models.Model):
     content = models.TextField()
-    date = models.DateTimeField()
+    date = models.DateTimeField(auto_now_add=True)
     post = models.ForeignKey('Post', models.DO_NOTHING, related_name='comments')
     user = models.ForeignKey('User', models.DO_NOTHING, related_name='comments')
 
@@ -144,8 +144,10 @@ class ImgUser(models.Model):
 class Plants(models.Model):
     name = models.CharField(max_length=200)
     created_at = models.DateTimeField()
-    species = models.ForeignKey('Species', models.DO_NOTHING)
+    species = models.ForeignKey('Species', models.DO_NOTHING, related_name='plants')
     last_watering = models.DateTimeField()
+    temp = models.FloatField()
+    user = models.ForeignKey('User', models.DO_NOTHING, related_name='plants')
 
     class Meta:
         managed = False
@@ -153,11 +155,11 @@ class Plants(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=1)
+    title = models.CharField(max_length=200)
     content = models.TextField()
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey('User', models.DO_NOTHING, related_name='posts')
-    nb_likes = models.IntegerField()
+    nb_likes = models.IntegerField(default='0', editable=False)
     img = models.TextField()
 
     class Meta:
